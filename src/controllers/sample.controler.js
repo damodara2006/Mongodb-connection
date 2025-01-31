@@ -6,4 +6,4 @@ const sample = (req,res)=>{
     })
 }
 
-export default sample
+export default sample;
