@@ -13,11 +13,13 @@ password string
  
 
 const userSchema = new Schema({
-    id :{
-        type: String,
-        unique: true,
-        required : true
+    
+    username:{
+        type:String,
+        lowercase:true,
+        required:true
     },
+
     firstname: {
         type:String,
         required:true,
@@ -43,10 +45,14 @@ const userSchema = new Schema({
             type:Schema.Types.ObjectId,
             ref:"Video"
         }
-    ]
+    ],
+    age:{
+        type:Number,
+        required:true
+    }
 },
 {
-    timestamps:true  // for created at and updated at date, a simple syntax in mongo DB
+    timestamps:true  // for createdat and updatedat date, a simple syntax in mongo DB
 }
 )
 //changing the password to hash value
@@ -72,4 +78,5 @@ userSchema.methods.generateAccessToken = function(){
 )
 }
 
-export const user = moongose.model("user",userSchema)
+ const User = mongoose.model("User",userSchema);
+ export default User;
